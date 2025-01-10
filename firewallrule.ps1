@@ -1,0 +1,1 @@
+New-NetFirewallRule -DisplayName "Allow HTTP port 443" -Direction Inbound -Protocol TCP -LocalPort 443 -Action Allow -Profile Any
