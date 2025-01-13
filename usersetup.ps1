@@ -3,10 +3,10 @@
 # Define new user parameters
 $username = "Wormtongue" # Change this to the desired username
 $Password = Read-Host -Prompt 'Enter Password' -AsSecureString
-$userPrincipalName = $username + "@" # Change to your domain
-$displayName = "" # Change this to the desired display name
-$description = "" # Change this to a suitable description
-$path = "CN=Users,DC=<yourDomainName>,DC=<yourDomainNameEnding>" # Change the path to the appropriate path in your AD structure
+$userPrincipalName = $username + "Wormtongue@RohanIT.sec" # Change to your domain
+$displayName = "Wormtongue" # Change this to the desired display name
+$description = "SysAdm" # Change this to a suitable description
+$path = "CN=Users,DC=<RohanIT>,DC=<sec>" # Change the path to the appropriate path in your AD structure
 # My path in the video CN=Users,DC=InfraIT,DC=sec (CN stands for Common Name, and DC stands for Domain Component)
 # Users is a container in the root of the domain and not a OU (Organizational Unit)
 
