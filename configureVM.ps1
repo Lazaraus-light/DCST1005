@@ -22,7 +22,7 @@ ipconfig /all
 # Add the computer to the domain
 $domainName = "RohanIT.sec" # replace with your domain name (e.g. InfraIT.sec)
 
-$cred = Get-Credential -UserName "<writeYourUserName>@$domainName" -Message 'Provide credentials for a domain admin'
+$cred = Get-Credential -UserName "Wormtongue@$domainName" -Message 'Provide credentials for a domain admin'
 Add-Computer -Credential $cred -DomainName $domainName -PassThru -Verbose
 Restart-Computer
 
