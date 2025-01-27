@@ -10,7 +10,7 @@
 New-ADGroup -Name "IT Support" `
     -GroupScope Global `
     -GroupCategory Security `
-    -Path "OU=Groups,DC=InfraIT,DC=sec"
+    -Path "OU=Groups,DC=RohanIT,DC=sec"
 
 
 ### Deleting a Group
@@ -28,19 +28,19 @@ Remove-ADGroup -Identity "IT Support" -Confirm:$false
 $groups = @(
     @{
         Name = "IT Support"
-        Path = "OU=IT,OU=Groups,DC=InfraIT,DC=sec"
+        Path = "OU=IT,OU=Groups,DC=RohanIT,DC=sec"
         Scope = "Global"
         Category = "Security"
     },
     @{
         Name = "HR Team"
-        Path = "OU=HR,OU=Groups,DC=InfraIT,DC=sec"
+        Path = "OU=HR,OU=Groups,DC=RohanIT,DC=sec"
         Scope = "Global"
         Category = "Security"
     },
     @{
         Name = "Finance Users"
-        Path = "OU=Finance,OU=Groups,DC=InfraIT,DC=sec"
+        Path = "OU=Finance,OU=Groups,DC=RohanIT,DC=sec"
         Scope = "Global"
         Category = "Security"
     }
@@ -202,14 +202,14 @@ function Remove-CustomADGroupMember {
 $groups = @(
     @{
         Name = "IT Support"
-        Path = "OU=IT,OU=Groups,DC=InfraIT,DC=sec"
+        Path = "OU=IT,OU=Groups,DC=RohanIT,DC=sec"
         Scope = "Global"
         Category = "Security"
         Members = @("John.Doe", "Jane.Smith", "Help Desk")
     },
     @{
         Name = "HR Team"
-        Path = "OU=HR,OU=Groups,DC=InfraIT,DC=sec"
+        Path = "OU=HR,OU=Groups,DC=RohanIT,DC=sec"
         Scope = "Global"
         Category = "Security"
         Members = @("Sarah.Johnson", "HR Managers")
@@ -240,4 +240,4 @@ Add-CustomADGroupMember -GroupName "HR Team" -Members @("New.Employee")
 #5. Handling errors at each step
 #6. Providing clear feedback for all operations
 
-#Remember to replace "DC=InfraIT,DC=sec" and the OU paths with your actual domain structure. Also ensure that the users and groups you're referencing actually exist in your Active Directory environment.
+#Remember to replace "DC=RohanIT,DC=sec" and the OU paths with your actual domain structure. Also ensure that the users and groups you're referencing actually exist in your Active Directory environment.

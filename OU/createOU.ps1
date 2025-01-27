@@ -7,7 +7,7 @@
 
 ### Creating a Basic OU
 #powershell
-New-ADOrganizationalUnit -Name "TestOU" -Path "DC=infrait,DC=sec"
+New-ADOrganizationalUnit -Name "Riddermark" -Path "DC=RohanIT,DC=sec"
 
 ### Deleting the OU
 #There are two approaches to delete an OU:
@@ -15,20 +15,20 @@ New-ADOrganizationalUnit -Name "TestOU" -Path "DC=infrait,DC=sec"
 #### Option 1: Disable Protection and Delete
 #powershell
 # First, disable the protection
-Set-ADOrganizationalUnit -Identity "OU=TestOU,DC=infrait,DC=sec" -ProtectedFromAccidentalDeletion $false
+Set-ADOrganizationalUnit -Identity "OU=TestOU,DC=RohanIT,DC=sec" -ProtectedFromAccidentalDeletion $false
 
 # Then delete the OU
-Remove-ADOrganizationalUnit -Identity "OU=TestOU,DC=infrait,DC=sec" -Confirm:$false
+Remove-ADOrganizationalUnit -Identity "OU=TestOU,DC=RohanIT,DC=sec" -Confirm:$false
 
 
 #### Option 2: Create OU Without Protection
 #When creating new OUs, you can disable the protection from the start:
 #powershell
 # Create OU with protection disabled
-New-ADOrganizationalUnit -Name "TestOU" -Path "DC=infrait,DC=sec" -ProtectedFromAccidentalDeletion $false
+New-ADOrganizationalUnit -Name "Groups" -Path "DC=RohanIT,DC=sec" -ProtectedFromAccidentalDeletion $false
 
 # Now you can delete it without first disabling protection
-Remove-ADOrganizationalUnit -Identity "OU=TestOU,DC=infrait,DC=sec" -Confirm:$false
+Remove-ADOrganizationalUnit -Identity "OU=Groups,DC=RohanIT,DC=sec" -Confirm:$false
 
 
 ## Checking OU Existence Before Creation
@@ -38,16 +38,16 @@ Remove-ADOrganizationalUnit -Identity "OU=TestOU,DC=infrait,DC=sec" -Confirm:$fa
 ### Checking and Creating an OU
 #powershell
 # First command: Check if OU exists
-if (-not(Get-ADOrganizationalUnit -Filter "Name -eq 'TestOU'" -SearchBase "DC=infrait,DC=sec")) {
-    New-ADOrganizationalUnit -Name "TestOU" -Path "DC=infrait,DC=sec"
+if (-not(Get-ADOrganizationalUnit -Filter "Name -eq 'TestOU'" -SearchBase "DC=RohanIT,DC=sec")) {
+    New-ADOrganizationalUnit -Name "TestOU" -Path "DC=RohanIT,DC=sec"
 }
 
 
 ### Deleting with Verification
 #powershell
 # Second command: Check if OU exists before deleting
-if (Get-ADOrganizationalUnit -Filter "Name -eq 'TestOU'" -SearchBase "DC=infrait,DC=sec") {
-    Remove-ADOrganizationalUnit -Identity "OU=TestOU,DC=infrait,DC=sec" -Recursive -Confirm:$false
+if (Get-ADOrganizationalUnit -Filter "Name -eq 'TestOU'" -SearchBase "DC=RohanIT,DC=sec") {
+    Remove-ADOrganizationalUnit -Identity "OU=TestOU,DC=RohanIT,DC=sec" -Recursive -Confirm:$false
 }
 
 
@@ -57,8 +57,8 @@ if (Get-ADOrganizationalUnit -Filter "Name -eq 'TestOU'" -SearchBase "DC=infrait
 
 #powershell
 # Define the OU details
-$ouName = "TestOU"
-$domainPath = "DC=infrait,DC=sec"
+$ouName = "Riddermark"
+$domainPath = "DC=RohanIT,DC=sec"
 $ouPath = "OU=$ouName,$domainPath"
 
 # Try to create the OU with error handling
@@ -84,25 +84,25 @@ try {
 #To find the path of an existing OU:
 #powershell
 # Get the Distinguished Name of an existing OU
-Get-ADOrganizationalUnit -Filter "Name -eq 'ParentOU'" -SearchBase "DC=infrait,DC=sec" | 
+Get-ADOrganizationalUnit -Filter "Name -eq 'ParentOU'" -SearchBase "DC=RohanIT,DC=sec" | 
     Select-Object -ExpandProperty DistinguishedName
 
 
 ### Creating an OU Inside Another OU
 #powershell
 # First, create the parent OU
-New-ADOrganizationalUnit -Name "ParentOU" -Path "DC=infrait,DC=sec"
+New-ADOrganizationalUnit -Name "ParentOU" -Path "DC=RohanIT,DC=sec"
 
 # Then create a child OU inside the parent OU
-New-ADOrganizationalUnit -Name "ChildOU" -Path "OU=ParentOU,DC=infrait,DC=sec"
+New-ADOrganizationalUnit -Name "Riders" -Path "OU=Riddermark,DC=RohanIT,DC=sec"
 
 
 ### Complete Example with Nested OUs and Error Handling
 #powershell
 # Define the OU structure
-$parentOUName = "ParentOU"
-$childOUName = "ChildOU"
-$domainPath = "DC=infrait,DC=sec"
+$parentOUName = "Riddermark"
+$childOUName = "Riders"
+$domainPath = "DC=RohanIT,DC=sec"
 
 # Function to create an OU with error handling
 function Create-ADOU {
@@ -167,7 +167,7 @@ $ouStructure = @{
     )
 }
 
-$domainPath = "DC=InfraIT,DC=sec"
+$domainPath = "DC=RohanIT,DC=sec"
 
 # Function to create an OU with error handling
 function New-CustomADOU {
@@ -296,4 +296,4 @@ function Remove-OUStructure {
 #6. Safe removal process (children before parents)
 #7. Status checking before each operation
     
-#Remember to replace "DC=InfraIT,DC=Sec" with your actual domain path in all examples.
+#Remember to replace "DC=RohanIT,DC=Sec" with your actual domain path in all examples.
