@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Dcst1005pub
 
 
@@ -63,3 +64,7 @@ Show TA the following:
 
 
 
+=======
+# DCST1005
+Øvinger gjort for DCST1005
+>>>>>>> fcce5f402a12544664b1646ee90fbedc22b7d213
